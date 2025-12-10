@@ -216,14 +216,13 @@ section {
     background-color: rgba(0, 0, 0, 0.7);
     display: flex;
     opacity: 0;
-    z-index: -1;
+    pointer-events: none;
     transition: .3s;
     overflow: auto;
-    
 
     &.show {
       opacity: 1;
-      z-index: 999;
+      pointer-events: auto;
     }
   }
 

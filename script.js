@@ -12,7 +12,11 @@ modalWindow.addEventListener("mousedown", (e) => e.stopPropagation());
 
 modalBackdrop.addEventListener("mousedown", () => {
     modalBackdrop.classList.remove("show");
-    modalTitle.innerText = '';
+    setTimeout(() => {
+        modalTitle.innerText = '';
+
+    }, 300)
+
 })
 
 const phoneSelector = document.querySelector(".phone-selector");
@@ -52,6 +56,9 @@ itemCards.forEach(card => {
         .trim();
 
     button.addEventListener("click", (e) => {
+        const digits = document.querySelectorAll(".phone-digit");
+        digits.forEach(digit => shuffleElements(digit));
+
         modalTitle.innerText = "ЗАКАЗАТЬ " + title;
         modalBackdrop.classList.add("show");
     });
