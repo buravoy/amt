@@ -13,6 +13,16 @@
 :root {
   --sidebar-width: 360px;
 }
+@media (max-width: 1400px) {
+  :root {
+    --sidebar-width: 250px;
+  }
+}
+@media (max-width: 992px) {
+  :root {
+    --sidebar-width: 0;
+  }
+}
 
 * {
   box-sizing: border-box;
@@ -39,6 +49,11 @@ header .logo {
   width: 68px;
   margin-right: 8px;
 }
+@media (max-width: 1400px) and (min-width: 993px) {
+  header .logo {
+    display: none;
+  }
+}
 header h1 {
   display: flex;
   flex-direction: column;
@@ -47,6 +62,11 @@ header h1 {
   font-family: "Bruno", sans-serif;
   line-height: 90%;
   font-weight: 700;
+}
+@media (max-width: 1400px) and (min-width: 993px) {
+  header h1 {
+    transform: scale(0.8);
+  }
 }
 header h1 .row1 {
   font-size: 21px;
@@ -100,6 +120,11 @@ menu li:hover {
 main {
   display: flex;
 }
+@media (max-width: 992px) {
+  main {
+    flex-direction: column;
+  }
+}
 
 footer {
   display: flex;
@@ -116,13 +141,37 @@ footer {
 }
 
 aside {
-  min-width: var(--sidebar-width);
+  width: var(--sidebar-width);
   border-right: 1px solid #E6E6E6;
   display: flex;
   flex-direction: column;
   position: fixed;
   top: 0;
   bottom: 0;
+  overflow: auto;
+}
+@media (max-width: 992px) {
+  aside {
+    position: relative;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  aside header {
+    width: 50%;
+    justify-content: flex-start;
+    padding-left: 20px;
+  }
+  aside nav {
+    width: 100%;
+    order: 3;
+    flex-direction: row;
+  }
+  aside menu {
+    order: 2;
+    width: 50%;
+  }
 }
 
 section {
