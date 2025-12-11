@@ -9,6 +9,8 @@ const itemCards = document.querySelectorAll(".item-card");
 let completeInterval;
 
 function openModal(title) {
+    const digits = document.querySelectorAll(".phone-digit");
+    digits.forEach(digit => shuffleElements(digit));
     orderButton.disabled = !isPhoneCorrect(phoneNumber);
     modalTitle.innerText = title;
     modalBackdrop.classList.add("show");
@@ -122,9 +124,5 @@ itemCards.forEach(card => {
         .replace(/\n|\r|\t|\s/g, ' ')
         .trim();
 
-    button.addEventListener("click", (e) => {
-        const digits = document.querySelectorAll(".phone-digit");
-        digits.forEach(digit => shuffleElements(digit));
-        openModal("ЗАКАЗАТЬ " + title)
-    });
+    button.addEventListener("click", () => openModal("ЗАКАЗАТЬ " + title));
 })

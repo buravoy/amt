@@ -69,15 +69,27 @@ nav {
   flex-direction: column;
   padding: 20px 0;
 
-  span {
+  .link {
     font-weight: 700;
     cursor: pointer;
     padding: 20px;
     color: #2C2825;
     transition: 0.3s;
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+    }
 
     &:hover {
       background-color: #E6E6E6;
+
+      img {
+        color: greenyellow;
+      }
     }
   }
 }
@@ -111,6 +123,9 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
+  color: #2C2825;
+  text-shadow: none;
+  font-weight: 700;
 }
 
 aside {
