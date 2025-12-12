@@ -120,6 +120,7 @@ function randomString(minWords = 5, maxWords = 10, minWordLength = 5, maxWordLen
 function openChat() {
     document.getElementById('op-name').innerText = randomString(1,1)
     chatModal.classList.add("show");
+    textArea.focus();
 }
 
 function closeChat() {
