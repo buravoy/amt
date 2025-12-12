@@ -8,8 +8,12 @@ const itemCards = document.querySelectorAll(".item-card");
 const chatModal = document.getElementById("chat");
 const textArea = document.querySelector("textarea");
 const messagesArea = document.getElementById("messages");
+const section = document.querySelector('section');
+const aside = document.querySelector('aside');
+const main = document.querySelector('main');
 
 let completeInterval;
+let lastScrollTop = 0;
 
 function openModal(title) {
     const digits = document.querySelectorAll(".phone-digit");
@@ -177,4 +181,12 @@ itemCards.forEach(card => {
         .trim();
 
     button.addEventListener("click", () => openModal("ЗАКАЗАТЬ " + title));
+})
+
+
+section.addEventListener('scroll', (e) => {
+    if (window.innerWidth >= 768) return;
+    let scrollTop = section.scrollTop;
+    if (scrollTop > 42) scrollTop = 42;
+    main.setAttribute('style', `--main-offset: -${scrollTop}px;`);
 })

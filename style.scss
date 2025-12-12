@@ -15,6 +15,9 @@
 
 :root {
   --sidebar-width: 360px;
+  --topbar-height: 50px;
+  --header-height: 50px;
+  --main-offset: 0px;
 
   @media (max-width: 1400px) {
     --sidebar-width: 250px;
@@ -22,6 +25,10 @@
 
   @media (max-width: 992px) {
     --sidebar-width: 0;
+  }
+
+  @media (max-width: 768px) {
+    --header-height: 42px;
   }
 }
 
@@ -45,6 +52,22 @@ header {
   border-bottom: 1px solid #E6E6E6;
   cursor: pointer;
 
+  @media (max-width: 992px) {
+    width: 50%;
+    justify-content: flex-start;
+    border: none;
+    padding: 5px 15px;
+    height: var(--header-height);
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    border-bottom: 1px solid #E6E6E6;
+    height: 42px;
+    transition: .5s;
+    margin-top: 0;
+  }
+
   .logo {
     border-radius: 10px;
     width: 68px;
@@ -52,6 +75,10 @@ header {
 
     @media (max-width: 1400px) and (min-width: 993px) {
       display: none;
+    }
+
+    @media (max-width: 992px) {
+      width: 40px;
     }
   }
 
@@ -68,15 +95,24 @@ header {
       transform: scale(0.8);
     }
 
-
     .row1{
       font-size: 21px;
       line-height: 22px;
+
+      @media (max-width: 992px) {
+        font-size: 12px;
+        line-height: 12px;
+      }
     }
 
     .row2 {
       font-size: 28px;
       line-height: 28px;
+
+      @media (max-width: 992px) {
+        font-size: 16px;
+        line-height: 16px;
+      }
     }
   }
 }
@@ -85,6 +121,22 @@ nav {
   display: flex;
   flex-direction: column;
   padding: 20px 0;
+
+  @media (max-width: 992px) {
+    width: 100%;
+    order: 3;
+    flex-direction: row;
+    padding: 0;
+    border-top: 1px solid #E6E6E6;
+    font-size: 14px;
+    height: var(--topbar-height);
+  }
+
+  @media (max-width: 768px) {
+    width: auto;
+    order: 2;
+    border: none;
+  }
 
   .link {
     font-weight: 700;
@@ -95,18 +147,38 @@ nav {
     display: flex;
     align-items: center;
 
+    @media (max-width: 992px) {
+      padding: 10px 15px;
+    }
+
+    @media (max-width: 768px) {
+      width: 25%;
+      justify-content: center;
+    }
+
+    span {
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+
     img {
       width: 30px;
       height: 30px;
       margin-right: 10px;
+
+      @media (max-width: 768px) {
+        margin-right: 0;
+      }
+
+      @media (max-width: 370px) {
+        width: 20px;
+        height: 20px;
+      }
     }
 
     &:hover {
       background-color: #E6E6E6;
-
-      img {
-        color: greenyellow;
-      }
     }
   }
 }
@@ -117,16 +189,59 @@ menu {
   padding: 20px;
   list-style: none;
 
+  @media (max-width: 992px) {
+    padding: 5px 15px;
+    order: 2;
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border: none;
+    list-style: none;
+    margin-top: 0;
+    font-size: 14px;
+    height: var(--topbar-height);
+  }
+
+  @media (max-width: 768px) {
+    padding-right: 0;
+    width: auto;
+    order: 3;
+  }
+
   li {
     padding: 10px 0;
     transition: 0.3s;
     display: flex;
     align-items: center;
 
+    @media (max-width: 992px) {
+      padding: 5px 15px;
+    }
+
+    @media (max-width: 768px) {
+      padding: 5px 10px;
+    }
+
+    span {
+      @media (max-width: 768px) {
+       display: none;
+      }
+    }
+
     img {
       width: 30px;
       height: 30px;
       margin-right: 10px;
+
+      @media (max-width: 768px) {
+        margin-right: 0;
+      }
+
+      @media (max-width: 370px) {
+        width: 20px;
+        height: 20px;
+      }
     }
 
     &:hover {
@@ -138,9 +253,28 @@ menu {
 
 main {
   display: flex;
+  scroll-padding-top: 100px;
+
 
   @media (max-width: 992px) {
     flex-direction: column;
+
+    aside {
+      position: fixed;
+      top: var(--main-offset);
+      left: 0;
+      right: 0;
+      z-index: 9;
+      bottom: unset;
+    }
+
+    section {
+      position: fixed;
+      top: calc(var(--topbar-height) + var(--header-height) + var(--main-offset));
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
   }
 }
 
@@ -167,6 +301,7 @@ aside {
   top: 0;
   bottom: 0;
   overflow: auto;
+  background: white;
 
   @media (max-width: 992px) {
     position: relative;
@@ -174,69 +309,10 @@ aside {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+  }
 
-    header {
-      width: 50%;
-      justify-content: flex-start;
-      border: none;
-      padding: 5px 15px;
-
-      .logo {
-        width: 40px;
-      }
-
-      h1 .row1 {
-        font-size: 12px;
-        line-height: 12px;
-      }
-      h1 .row2 {
-        font-size: 16px;
-        line-height: 16px;
-      }
-    }
-
-    nav {
-      width: 100%;
-      order: 3;
-      flex-direction: row;
-      padding: 0;
-      border-top: 1px solid #E6E6E6;
-      font-size: 14px;
-      .link {
-        padding: 10px 15px;
-
-        @media (max-width: 658px) {
-          width: 25%;
-          justify-content: center;
-
-          span {
-            display: none;
-          }
-
-          img {
-            margin-right: 0;
-          }
-        }
-      }
-
-
-    }
-
-    menu {
-      padding: 5px 15px;
-      order: 2;
-      width: 50%;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      border: none;
-      list-style: none;
-      margin-top: 0;
-      font-size: 14px;
-      li {
-        padding: 5px 15px;
-      }
-    }
+  @media (max-width: 768px) {
+    border-bottom: 1px solid #E6E6E6;
   }
 }
 
@@ -255,17 +331,25 @@ section {
     font-size: 58px;
     line-height: 58px;
     margin-bottom: 15px;
+
+    @media (max-width: 768px) {
+      font-size: 28px;
+      line-height: 28px;
+    }
   }
 
   .annotation {
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 40px;
+
+    @media (max-width: 768px) {
+      font-size: 16px !important;
+    }
   }
 
   &-home,
   &-contacts {
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -273,6 +357,10 @@ section {
     .annotation {
       text-align: right;
       margin-bottom: 5px;
+
+      @media (max-width: 768px) {
+        line-height: 28px !important;
+      }
     }
   }
 
@@ -316,6 +404,14 @@ section {
     grid-column-gap: 20px;
     grid-row-gap: 20px;
 
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr 1fr ;
+      grid-column-gap: 10px;
+    }
+
+    @media (max-width: 576px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &-card {
@@ -332,12 +428,24 @@ section {
       padding: 20px;
       color: white;
       text-shadow: 0 0 5px black;
+
+      @media (max-width: 768px) {
+        min-height: 150px;
+        font-size: 16px;
+        padding: 10px;
+      }
     }
 
     p {
       padding: 20px;
       font-size: 14px;
       font-weight: 600;
+
+      @media (max-width: 768px) {
+        //min-height: 150px;
+        font-size: 12px;
+        padding: 10px;
+      }
     }
     button {
       width: 100%;
@@ -366,6 +474,15 @@ section {
   margin: auto;
   padding: 20px;
   position: relative;
+
+  @media (max-width: 524px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+  }
 
   .close {
     width: 40px;
@@ -404,6 +521,7 @@ section {
     pointer-events: none;
     transition: .3s;
     overflow: auto;
+    z-index: 99;
 
     &.show {
       opacity: 1;
@@ -445,7 +563,6 @@ section {
     }
   }
 }
-
 
 .phone {
   &-selector {
@@ -494,7 +611,6 @@ section {
   }
 }
 
-
 #chat {
   .title {
     text-align: left;
@@ -507,7 +623,7 @@ section {
   }
 
   #messages {
-    height: 380px;
+    height: calc(100% - 100px);
     margin-bottom: 10px;
     width: 100%;
     padding: 10px;
