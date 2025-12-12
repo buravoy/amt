@@ -365,10 +365,11 @@ section {
   }
 
   &-home {
-    background: url("images/3kju95r9o7eb1.png");
+    background-image: url("images/3kju95r9o7eb1.png");
     background-size: cover;
     color: white;
     text-shadow: 0 0 5px black;
+    background-position: 20% 50%;
   }
 
   &-contacts {
