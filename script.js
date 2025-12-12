@@ -9,11 +9,9 @@ const chatModal = document.getElementById("chat");
 const textArea = document.querySelector("textarea");
 const messagesArea = document.getElementById("messages");
 const section = document.querySelector('section');
-const aside = document.querySelector('aside');
 const main = document.querySelector('main');
 
 let completeInterval;
-let lastScrollTop = 0;
 
 function openModal(title) {
     const digits = document.querySelectorAll(".phone-digit");
