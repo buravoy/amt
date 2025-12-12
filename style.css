@@ -565,6 +565,11 @@ section {
   text-align: center;
   padding: 10px 0 20px;
 }
+@media (max-width: 524px) {
+  .phone-number {
+    font-size: 26px;
+  }
+}
 .phone-text {
   text-align: center;
   margin-top: 20px;
@@ -584,6 +589,15 @@ section {
   padding: 0 5px;
   font-weight: 500;
   user-select: none;
+}
+@media (max-width: 524px) {
+  .phone-digit label {
+    padding: 1px 2px;
+    font-size: 12px;
+  }
+  .phone-digit label input {
+    margin-right: 2px;
+  }
 }
 .phone-digit label input {
   pointer-events: none;
