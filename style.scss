@@ -482,6 +482,8 @@ section {
     right: 0;
     bottom: 0;
     width: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   .close {
@@ -685,6 +687,4 @@ section {
     width: 30px;
     margin-bottom: 5px;
   }
-
-
 }
